@@ -1,3 +1,6 @@
+github.com/ZupIT/horus-engine v0.2.7 h1:tRJWorSIgPoM0U17rZF8UuGFur15qUiMdO96kHgreGQ=
+github.com/antlr/antlr4 v0.0.0-20201029161626-9a95f0cc3d7c h1:j/C2kxPfyE0d87/ggAjIsCV5Cdkqmjb+O0W8W+1J+IY=
+github.com/antlr/antlr4 v0.0.0-20201029161626-9a95f0cc3d7c/go.mod h1:T7PbCXFs94rrTttyxjbyT5+/1V8T2TYDejxUfHJjw1Y=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/google/uuid v1.1.1 h1:Gkbcsh/GbpXz7lPftLA3P6TYMwjCLYm83jiFQZF/3gY=
