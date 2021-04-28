@@ -1,0 +1,14 @@
+[
+  {
+     "ID": "4a8e46cc-21b2-46cf-b03b-c16491f2ed62",
+     "Name": "Controller",
+     "Description": "Controller",
+     "Severity": "HIGH",
+     "Confidence": "HIGH",
+     "Type": "Regular",
+     "Tool": "HorusecLeaks",
+     "Expressions": [
+        ".Add"
+     ]
+  }
+]

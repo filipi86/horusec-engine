@@ -56,7 +56,7 @@ A simple analysis of a inmemory string:
 	var exampleGoFile = `package version
 
 import (
-	"github.com/ZupIT/horusec/development-kit/pkg/utils/logger"
+	"github.com/ZupIT/horusec-devkit/pkg/utils/logger"
 	"github.com/spf13/cobra"
 )
 

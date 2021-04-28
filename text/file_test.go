@@ -74,7 +74,7 @@ func TestFindLineAndColumnWithAGoFile(t *testing.T) {
 	var exampleGoFile = `package version
 
 import (
-	"github.com/ZupIT/horusec/development-kit/pkg/utils/logger"
+	"github.com/ZupIT/horusec-devkit/pkg/utils/logger"
 	"github.com/spf13/cobra"
 )
 
@@ -129,7 +129,7 @@ func TestExtractSampleWithAGoFile(t *testing.T) {
 	var exampleGoFile = `package version
 
 import (
-	"github.com/ZupIT/horusec/development-kit/pkg/utils/logger"
+	"github.com/ZupIT/horusec-devkit/pkg/utils/logger"
 	"github.com/spf13/cobra"
 )
 

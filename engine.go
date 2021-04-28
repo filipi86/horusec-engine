@@ -3,9 +3,11 @@ package engine
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/ZupIT/horusec/development-kit/pkg/utils/logger"
 	"math"
 	"os"
+
+	"github.com/ZupIT/horusec-devkit/pkg/utils/logger"
+	"github.com/sirupsen/logrus"
 )
 
 type Unit interface {
@@ -51,7 +53,7 @@ func RunOutputInJSON(document []Unit, rules []Rule, jsonFilePath string) error {
 func RunMaxUnitsByAnalysis(document []Unit, rules []Rule, maxUnitPerAnalysis int) (documentFindings []Finding) {
 	listDocuments := breakTextUnitsIntoLimitOfUnit(document, maxUnitPerAnalysis)
 	for key, units := range listDocuments {
-		logger.LogDebugWithLevel(fmt.Sprintf("Start run analysis %v/%v", key, len(listDocuments)), logger.DebugLevel)
+		logger.LogDebugWithLevel(fmt.Sprintf("Start run analysis %v/%v", key, len(listDocuments)), logrus.DebugLevel)
 		documentFindings = append(documentFindings, Run(units, rules)...)
 	}
 	return documentFindings
@@ -76,7 +78,7 @@ func getTotalTextUnitsToRunByAnalysis(textUnits []Unit, maxUnitsPerAnalysis int)
 		return 1
 	}
 	totalUnitsToRun := float64(totalTextUnits / maxUnitsPerAnalysis)
-	// nolint:staticcheck is necessary usage pointless in math.ceil
+	// nolint //  is necessary usage pointless in math.ceil
 	return int(math.Ceil(totalUnitsToRun))
 }
 
