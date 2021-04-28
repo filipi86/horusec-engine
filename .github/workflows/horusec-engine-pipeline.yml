@@ -1,11 +1,12 @@
-name: HorusecEnginePipeline
+name: HorusecAnalyticPipeline
 
-on: [push]
+on: ["push"]
 
 jobs:
-  fmt-lint-test-coverage:
-    name: fmt-lint-test-coverage
+  install-build-test-fmt-lint:
+    name: install-build-test-fmt-lint
     runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
       - name: Set up Go 1.14
         uses: actions/setup-go@v1
@@ -14,6 +15,8 @@ jobs:
         id: go
       - name: Check out code
         uses: actions/checkout@v2
+      - name: Setup External Dependences
+        run: make compose
       - name: fmt
         run: |
           echo "==> Checking that code complies with gofmt requirements..."
@@ -25,10 +28,18 @@ jobs:
               echo "You can use the command: \`gofmt -w \$(gofmt -l \'find . -name \'*.go\' | grep -v vendor)\` to reformat code."
               exit 1
           fi
-          echo "=) The project horusec-cli it's OK!"
+          echo "=) The project analytic it's OK!"
       - name: lint
-        run: make lint
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s latest
+          ./bin/golangci-lint run -v --timeout=5m -c .golangci.yml ./...
       - name: test
-        run: make test
+        run: |
+          go clean -testcache
+          go test -v ./... -timeout=5m -parallel=1 -failfast -short
       - name: coverage
         run: make coverage
+      - name: build
+        run: go build -o "./tmp/bin/analytic" ./cmd/app/main.go
+      - name: security
+        run: make security
